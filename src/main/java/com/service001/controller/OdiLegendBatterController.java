@@ -1,8 +1,10 @@
 package com.service001.controller;
 
 import com.service001.model.OdiLegendBatter;
+import com.service001.requestDTO.OdiLegendBatterRequestDTO;
 import com.service001.service.OdiLegendBatterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,5 +19,10 @@ public class OdiLegendBatterController {
     @RequestMapping(method = RequestMethod.GET, value = "/odiLegendBatter/list/v1")
     public List<OdiLegendBatter> getAllOdiLegendBatters() {
         return odiLegendBatterService.getAllOdiLegendBatters();
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/odiLegendBatter/add")
+    public OdiLegendBatter createOdiLegendBatter(@RequestBody OdiLegendBatterRequestDTO request) {
+        return odiLegendBatterService.createOdiLegendBatter(request);
     }
 }
