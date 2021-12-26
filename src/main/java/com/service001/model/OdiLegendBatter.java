@@ -1,5 +1,6 @@
 package com.service001.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,4 +33,23 @@ public class OdiLegendBatter {
 
     @Column(name = "avg")
     private BigDecimal avg;
+
+    @Transient
+    private Long odiTeamId;
+
+    public Long getOdiTeamId() {
+        return odiTeam.getId();
+    }
+
+    @Transient
+    private String odiTeamName;
+
+    public String getOdiTeamName() {
+        return odiTeam.getTeamName();
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "odi_team_id")
+    @JsonIgnore
+    private OdiTeam odiTeam;
 }

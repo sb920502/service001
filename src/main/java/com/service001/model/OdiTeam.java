@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "odi_team", schema = "service001")
@@ -28,4 +30,7 @@ public class OdiTeam {
 
     @Column(name = "points")
     private int points;
+
+    @OneToMany(mappedBy = "odiTeam")
+    private List<OdiLegendBatter> odiLegendBatterList = new ArrayList<>();
 }
